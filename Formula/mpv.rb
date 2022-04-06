@@ -4,7 +4,7 @@ class Mpv < Formula
   url "https://github.com/mpv-player/mpv/archive/v0.34.1.tar.gz"
   sha256 "32ded8c13b6398310fa27767378193dc1db6d78b006b70dbcbd3123a1445e746"
   license :cannot_represent
-  revision 1
+  revision 2
   head "https://github.com/mpv-player/mpv.git", branch: "master"
 
   bottle do
@@ -18,7 +18,7 @@ class Mpv < Formula
 
   depends_on "docutils" => :build
   depends_on "pkg-config" => :build
-  depends_on "python@3.9" => :build
+  depends_on "python@3.10" => :build
   depends_on xcode: :build
 
   depends_on "ffmpeg@4"
@@ -61,9 +61,9 @@ class Mpv < Formula
       --lua=luajit
     ]
 
-    system Formula["python@3.9"].opt_bin/"python3", "bootstrap.py"
-    system Formula["python@3.9"].opt_bin/"python3", "waf", "configure", *args
-    system Formula["python@3.9"].opt_bin/"python3", "waf", "install"
+    system Formula["python@3.10"].opt_bin/"python3", "bootstrap.py"
+    system Formula["python@3.10"].opt_bin/"python3", "waf", "configure", *args
+    system Formula["python@3.10"].opt_bin/"python3", "waf", "install"
   end
 
   test do
