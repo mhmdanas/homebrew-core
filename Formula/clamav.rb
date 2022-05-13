@@ -27,6 +27,7 @@ class Clamav < Formula
   depends_on "json-c"
   depends_on "openssl@1.1"
   depends_on "pcre2"
+  depends_on "tomsfastmath"
   depends_on "yara"
 
   uses_from_macos "bzip2"
@@ -44,6 +45,7 @@ class Clamav < Formula
   def install
     args = std_cmake_args + %W[
       -DAPP_CONFIG_DIRECTORY=#{etc}/clamav
+      -DENABLE_EXTERNAL_TOMSFASTMATH=ON
       -DENABLE_JSON_SHARED=ON
       -DENABLE_STATIC_LIB=ON
       -DENABLE_SHARED_LIB=ON
