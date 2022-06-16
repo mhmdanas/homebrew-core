@@ -3,9 +3,9 @@
 class Xz < Formula
   desc "General-purpose data compression with high compression ratio"
   homepage "https://tukaani.org/xz/"
-  url "https://downloads.sourceforge.net/project/lzmautils/xz-5.2.5.tar.gz"
-  mirror "https://tukaani.org/xz/xz-5.2.5.tar.gz"
-  sha256 "f6f4910fd033078738bd82bfba4f49219d03b17eb0794eb91efbae419f4aba10"
+  url "https://downloads.sourceforge.net/project/lzmautils/xz-5.2.5.tar.bz2"
+  mirror "https://tukaani.org/xz/xz-5.2.5.tar.bz2"
+  sha256 "5117f930900b341493827d63aa910ff5e011e0b994197c3b71c08a20228a42df"
   license all_of: [
     :public_domain,
     "LGPL-2.1-or-later",
