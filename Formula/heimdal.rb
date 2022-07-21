@@ -4,7 +4,7 @@ class Heimdal < Formula
   url "https://github.com/heimdal/heimdal/releases/download/heimdal-7.7.0/heimdal-7.7.0.tar.gz"
   sha256 "f02d3314d634cc55eb9cf04a1eae0d96b293e45a1f837de9d894e800161b7d1b"
   license "BSD-3-Clause"
-  revision 3
+  revision 4
 
   livecheck do
     url :stable
@@ -24,7 +24,8 @@ class Heimdal < Formula
   keg_only "conflicts with Kerberos"
 
   depends_on "bison" => :build
-  depends_on "berkeley-db"
+  depends_on "berkeley-db@5"
+  # This is a runtime dependency because heimdal is linked with `libfl`.
   depends_on "flex"
   depends_on "lmdb"
   depends_on "openldap"
@@ -53,7 +54,7 @@ class Heimdal < Formula
       system "make", "install"
     end
 
-    ENV.append "LDFLAGS", "-L#{Formula["berkeley-db"].opt_lib}"
+    ENV.append "LDFLAGS", "-L#{Formula["berkeley-db@5"].opt_lib}"
     ENV.append "LDFLAGS", "-L#{Formula["lmdb"].opt_lib}"
     ENV.append "CFLAGS", "-I#{Formula["lmdb"].opt_include}"
 
@@ -71,7 +72,7 @@ class Heimdal < Formula
       --with-openssl=#{Formula["openssl@1.1"].opt_prefix}
       --with-hcrypto-default-backend=ossl
       --with-berkeley-db
-      --with-berkeley-db-include=#{Formula["berkeley-db"].opt_include}
+      --with-berkeley-db-include=#{Formula["berkeley-db@5"].opt_include}
     ]
 
     system "./configure", *args
