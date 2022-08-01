@@ -2,7 +2,7 @@ class Moc < Formula
   desc "Terminal-based music player"
   homepage "https://moc.daper.net/"
   license "GPL-2.0-or-later"
-  revision 6
+  revision 7
 
   stable do
     url "http://ftp.daper.net/pub/soft/moc/stable/moc-2.5.2.tar.bz2"
@@ -62,7 +62,7 @@ class Moc < Formula
   depends_on "automake" => :build
   depends_on "gettext" => :build
   depends_on "pkg-config" => :build
-  depends_on "berkeley-db"
+  depends_on "berkeley-db@5" # berkeley-db > 5 is AGPL, so keep it at version 5 to avoid relicense
   depends_on "ffmpeg@4"
   depends_on "jack"
   depends_on "libtool"
