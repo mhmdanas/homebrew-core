@@ -4,6 +4,7 @@ class Apt < Formula
   url "https://deb.debian.org/debian/pool/main/a/apt/apt_2.5.2.tar.xz"
   sha256 "cc5c374c2831c9e390d9c5f08029a81c3ca2b778abc0dd1426c81c657628fe9d"
   license "GPL-2.0-or-later"
+  revision 1
 
   livecheck do
     url "https://deb.debian.org/debian/pool/main/a/apt/"
@@ -23,7 +24,7 @@ class Apt < Formula
   depends_on "po4a" => :build
   depends_on "w3m" => :build
 
-  depends_on "berkeley-db"
+  depends_on "berkeley-db@5"
   depends_on "bzip2"
   depends_on "dpkg"
   depends_on "gcc"
@@ -134,7 +135,7 @@ class Apt < Formula
     system "cmake", "-S", ".", "-B", "build",
                     "-DDPKG_DATADIR=#{Formula["dpkg"].opt_libexec}/share/dpkg",
                     "-DDOCBOOK_XSL=#{Formula["docbook-xsl"].opt_prefix}/docbook-xsl",
-                    "-DBERKELEY_INCLUDE_DIRS=#{Formula["berkeley-db"].opt_include}",
+                    "-DBERKELEY_INCLUDE_DIRS=#{Formula["berkeley-db@5"].opt_include}",
                     *std_cmake_args
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"
