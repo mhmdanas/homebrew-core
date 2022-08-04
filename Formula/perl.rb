@@ -4,6 +4,7 @@ class Perl < Formula
   url "https://www.cpan.org/src/5.0/perl-5.34.0.tar.xz"
   sha256 "82c2e5e5c71b0e10487a80d79140469ab1f8056349ca8545140a224dbbed7ded"
   license any_of: ["Artistic-1.0-Perl", "GPL-1.0-or-later"]
+  revision 1
   head "https://github.com/perl/perl5.git", branch: "blead"
 
   livecheck do
@@ -21,10 +22,11 @@ class Perl < Formula
     sha256 x86_64_linux:   "cfd7c32f4076b6d9fbfb894bb6dc30cb14305a13e9b0fee93cd9b1ec2a768c92"
   end
 
-  depends_on "berkeley-db"
+  depends_on "berkeley-db@5"
   depends_on "gdbm"
 
   uses_from_macos "expat"
+  uses_from_macos "libxcrypt"
 
   # Prevent site_perl directories from being removed
   skip_clean "lib/perl5/site_perl"
