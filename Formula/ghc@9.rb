@@ -1,8 +1,8 @@
 class GhcAT9 < Formula
   desc "Glorious Glasgow Haskell Compilation System"
   homepage "https://haskell.org/ghc/"
-  url "https://downloads.haskell.org/~ghc/9.2.3/ghc-9.2.3-src.tar.xz"
-  sha256 "50ecdc2bef013e518f9a62a15245d7db0e4409d737c43b1cea7306fd82e1669e"
+  url "https://downloads.haskell.org/~ghc/9.4.1/ghc-9.4.1-src.tar.xz"
+  sha256 "cbfed4640bdf025e33ba55433daf8cdf698f4e0499ae7a800dde44a82e7396e3"
   license "BSD-3-Clause"
 
   livecheck do
@@ -21,17 +21,15 @@ class GhcAT9 < Formula
 
   keg_only :versioned_formula
 
-  depends_on "autoconf" => :build
-  depends_on "automake" => :build
   depends_on "gmp" => :build
-  depends_on "libtool" => :build
   depends_on "python@3.10" => :build
   depends_on "sphinx-doc" => :build
+
   uses_from_macos "m4" => :build
   uses_from_macos "ncurses"
 
   on_arm do
-    depends_on "llvm@12"
+    depends_on "llvm@13"
   end
 
   # https://www.haskell.org/ghc/download_ghc_9_0_2.html#macosx_x86_64
@@ -74,7 +72,6 @@ class GhcAT9 < Formula
       ENV.prepend_path "PATH", binary/"bin"
     end
 
-    system "./boot"
     system "./configure", "--prefix=#{prefix}", "--with-intree-gmp"
     system "make"
 
@@ -82,7 +79,7 @@ class GhcAT9 < Formula
     Dir.glob(lib/"*/package.conf.d/package.cache") { |f| rm f }
     Dir.glob(lib/"*/package.conf.d/package.cache.lock") { |f| rm f }
 
-    bin.env_script_all_files libexec, PATH: "$PATH:#{Formula["llvm@12"].opt_bin}" if Hardware::CPU.arm?
+    bin.env_script_all_files libexec, PATH: "$PATH:#{Formula["llvm@13"].opt_bin}" if Hardware::CPU.arm?
   end
 
   def post_install
