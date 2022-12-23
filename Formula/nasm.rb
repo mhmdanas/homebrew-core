@@ -1,8 +1,8 @@
 class Nasm < Formula
   desc "Netwide Assembler (NASM) is an 80x86 assembler"
   homepage "https://www.nasm.us/"
-  url "https://www.nasm.us/pub/nasm/releasebuilds/2.16/nasm-2.16.tar.xz"
-  sha256 "f05e2dc04bdb075487207d775770e9e508e250e63da8bf6c769976d66dd55249"
+  url "https://www.nasm.us/pub/nasm/releasebuilds/2.16.01/nasm-2.16.01.tar.xz"
+  sha256 "c77745f4802375efeee2ec5c0ad6b7f037ea9c87c92b149a9637ff099f162558"
   license "BSD-2-Clause"
 
   livecheck do
